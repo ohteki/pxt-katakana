@@ -75,7 +75,7 @@ namespace katakana {
       [0,24,0,0,0],
       [0,4,4,4,0],
       [0,0,16,0,0],
-      [16,8,4,2,1],
+      [16,8,4,2,1]
     ],
     [
       [14,17,17,14,0],
@@ -260,7 +260,7 @@ namespace katakana {
       }
     }
     for (let c = 0; c < text.length; c++) {
-        for (let x = 0; x < 10; x++) {
+        for (let x = 0; x < arr.length; x++) {
             for (let y = 0; y < 16; y++) {
                 if (hs[x][y] == text.substr(c, 1) || em[x][y] == text.substr(c, 1)) {
                     for (let z = 0; z < arr[x][y].length; z++) {
