@@ -1,11 +1,9 @@
 //% weight=70 icon="\uf185" color=#EC7505 block="カタカナ"
 namespace katakana {
-    const hs1 = " !" + '"' + "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"
-    const hs2 = "abcdefghijklmnopqrstuvwxyz{|}~¥｡｢｣､･ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ"
-    const hs = hs1+hs2
-    const em1 = "　！”＃＄％＆’（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀"
-    const em2 = "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝〜￥。「」、・ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛°"
-    const em = em1+em2
+    const hs1 = " !" + '"' + "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz"
+    const em1 = "　！”＃＄％＆’（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ"
+    const hs2 = "{|}~¥｡｢｣､･ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ"
+    const em2 = "｛｜｝〜￥。「」、・ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛°"
     const arr = [
         "0000000000",
         "0000230000",   //！
@@ -97,7 +95,9 @@ namespace katakana {
         "3016081630",
         "1812121800",
         "1820080402",
-        "1826221800",   //z
+        "1826221800"   //z
+    ]
+    const arr2 = [
         "0000043117",
         "0000310000",
         "1731040000",
@@ -108,7 +108,7 @@ namespace katakana {
         "1616300000",
         "0816000000",
         "0000040000",
-        "2121212115",   //ヲ
+        "0105212115",   //ヲ
         "0230100600",
         "1608280200",
         "0004221200",
@@ -133,11 +133,11 @@ namespace katakana {
         "2121170807",
         "1709051117",
         "0215181822",
-        "0316161615",
+        "0316160807",
         "1818210907",   //タ
-        "2121211505",
-        "2316231615",
-        "2121130505",
+        "2021211505",
+        "0316191615",
+        "2021130504",
         "0031040800",
         "1818150202",   //ナ
         "1617171716",
@@ -168,56 +168,62 @@ namespace katakana {
         "0205020000"
     ]
     const marks = [
-        ["ガ", "カﾞ"], ["ギ", "キﾞ"], ["グ", "クﾞ"], ["ゲ", "ケﾞ"], ["ゴ", "コﾞ"],
-        ["ザ", "サﾞ"], ["ジ", "シﾞ"], ["ズ", "スﾞ"], ["ゼ", "セﾞ"], ["ゾ", "ソﾞ"],
-        ["ダ", "タﾞ"], ["ヂ", "チﾞ"], ["ヅ", "ツﾞ"], ["デ", "テﾞ"], ["ド", "トﾞ"],
-        ["バ", "ハﾞ"], ["ビ", "ヒﾞ"], ["ブ", "フﾞ"], ["ベ", "ヘﾞ"], ["ボ", "ホﾞ"],
-        ["ヴ", "ウﾞ"],
-        ["パ", "ハﾟ"], ["ピ", "ヒﾟ"], ["プ", "フﾟ"], ["ペ", "ヘﾟ"], ["ポ", "ホﾟ"]
+        "ガカﾞ", "ギキﾞ", "グクﾞ", "ゲケﾞ", "ゴコﾞ",
+        "ザサﾞ", "ジシﾞ", "ズスﾞ", "ゼセﾞ", "ゾソﾞ",
+        "ダタﾞ", "ヂチﾞ", "ヅツﾞ", "デテﾞ", "ドトﾞ",
+        "バハﾞ", "ビヒﾞ", "ブフﾞ", "ベヘﾞ", "ボホﾞ",
+        "ヴウﾞ",
+        "パハﾟ", "ピヒﾟ", "プフﾟ", "ペヘﾟ", "ポホﾟ"
     ]
 
     //% blockId=show_strings block="文字列を表示 %v"
     export function putStr(text: string, time: number = 500): void {
         let strings: number[] = []
-        for (let m = 0; m < marks.length; m++) {
-            for (let c = 0; c < text.length; c++) {
-                if (text.substr(c, 1) == marks[m][0]) {
-                    text = text.substr(0, c) + marks[m][1] + text.substr(c + 1, text.length - c - 1)
-                }
-            }
+        for (let c = 0; c < text.length; c++) {
+            console.log(text.substr(c, 1))
+            if (text.substr(c, 1) == "　") text = text.substr(0, c) + " " + text.substr(c + 1, text.length - c - 1)
+            for (let m = 0; m < marks.length; m++)
+                if (text.substr(c, 1) == marks[m].substr(0, 1))
+                    text = text.substr(0, c) + marks[m].substr(1, 2) + text.substr(c + 1, text.length - c - 1)
         }
         for (let d = 0; d < text.length; d++) {
             for (let x = 0; x < arr.length; x++) {
-                if (hs.substr(x, 1) == text.substr(d, 1) || em.substr(x, 1) == text.substr(d, 1)) {
+                if (hs1.substr(x, 1) == text.substr(d, 1) || em1.substr(x, 1) == text.substr(d, 1)) {
                     for (let z = 0; z < 5; z++) strings.push(parseInt(arr[x].substr(z * 2, 2)))
-                    if ((x == arr.length - 2) || (x == arr.length - 1)) {
+                    strings.push(0)
+                    break
+                }
+                if (hs2.substr(x, 1) == text.substr(d, 1) || em2.substr(x, 1) == text.substr(d, 1)) {
+                    for (let z = 0; z < 5; z++) strings.push(parseInt(arr2[x].substr(z * 2, 2)))
+                    if ((x == arr2.length - 2) || (x == arr2.length - 1)) {
                         strings.splice(strings.length - 6, 1)
-                        let p = (3 - ((x + 1) % 2))
-                        strings.splice(strings.length - p, p)
+                        strings.splice(strings.length - (3 - (x % 2)), (3 - (x % 2)))
                     }
                     strings.push(0)
+                    break
                 }
             }
         }
 
-        for (let a = 0; a < strings.length; a++) {
-            for (let y = a; y < a + 5; y++) {
-                let tmp = y >= strings.length ? strings[y - strings.length] : strings[y]
-                for (let b = 0; b < 5; b++) {
-                    if (tmp % 2 == 1) {
-                        led.plot(y - a, b)
-                        tmp = (tmp - 1) / 2
-                    } else {
-                        tmp = tmp / 2
+        if (strings.length == 6) {
+            for (let y = 0; y < 5; y++)
+                for (let b = 0, tmp = strings[y]; b < 5; b++) {
+                    tmp % 2 == 1 && led.plot(y, b)
+                    tmp = (tmp - (tmp % 2)) / 2
+                }
+        } else {
+            for (let a = 0; a < strings.length; a++) {
+                for (let y = a; y < a + 5; y++)
+                    for (let b = 0, tmp = strings[y >= strings.length ? y - strings.length : y]; b < 5; b++) {
+                        tmp % 2 == 1 && led.plot(y - a, b)
+                        tmp = (tmp - (tmp % 2)) / 2
                     }
-                }
-            }
-            basic.pause(time)
-            for (let e = 0; e < 5; e++) {
-                for (let f = 0; f < 5; f++) {
-                    led.unplot(e, f)
-                }
+                basic.pause(time)
+                for (let e = 0; e < 5; e++)
+                    for (let f = 0; f < 5; f++)
+                        led.unplot(e, f)
             }
         }
+
     }
 }
