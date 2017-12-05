@@ -180,7 +180,6 @@ namespace katakana {
     export function putStr(text: string, time: number = 500): void {
         let strings: number[] = []
         for (let c = 0; c < text.length; c++) {
-            console.log(text.substr(c, 1))
             if (text.substr(c, 1) == "　") text = text.substr(0, c) + " " + text.substr(c + 1, text.length - c - 1)
             for (let m = 0; m < marks.length; m++)
                 if (text.substr(c, 1) == marks[m].substr(0, 1))
@@ -214,7 +213,7 @@ namespace katakana {
         } else {
             for (let a = 0; a < strings.length; a++) {
                 for (let y = a; y < a + 5; y++)
-                    for (let b = 0, tmp = strings[y >= strings.length ? y - strings.length : y]; b < 5; b++) {
+                    for (let b = 0, tmp = strings[y]; b < 5; b++) {
                         tmp % 2 == 1 && led.plot(y - a, b)
                         tmp = (tmp - (tmp % 2)) / 2
                     }
